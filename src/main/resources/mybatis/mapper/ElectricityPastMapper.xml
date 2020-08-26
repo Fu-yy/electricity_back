@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuy.mapper.ElectricityPastMapper">
+
+    <resultMap id="electricityPastResultMap" type="ElectricityPast">
+        <id property="electricityId" column="electricityId" />
+        <result property="electricityDate" column="electricityDate"/>
+        <result property="electricityName" column="electricityName"/>
+        <result property="electricityNum" column="electricityNum"/>
+    </resultMap>
+    <select id="findElectricityPastList" resultType="com.fuy.pojo.ElectricityPast" resultMap="electricityPastResultMap">
+        select * from electricity_past
+    </select>
+    <select id="findElectricityPastDataList" resultType="java.util.Date" resultMap="electricityPastResultMap">
+        select distinct `electricityDate` from electricity_past
+    </select>
+    <select id="findElectricityPastNameList" resultType="java.lang.String" resultMap="electricityPastResultMap">
+        select distinct `electricityName` from electricity_past
+    </select>
+    <select id="findElectricityPastNumList" resultType="java.math.BigDecimal" resultMap="electricityPastResultMap">
+        select `electricityNum` from electricity_past
+    </select>
+</mapper>

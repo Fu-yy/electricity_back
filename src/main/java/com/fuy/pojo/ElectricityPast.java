@@ -11,9 +11,10 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EletrictPast {
-    private Date dateTime;
-    private BigDecimal machinePast;
-    private BigDecimal carPast;
-    private BigDecimal aviationPast;
+public class ElectricityPast {
+    private Integer electricityId;
+    private Date electricityDate;
+    private String  electricityName;
+    private BigDecimal electricityNum;
+
 }

@@ -14,7 +14,7 @@ public interface ElectricityPastService {
      * 所有时间列表
      * @return
      */
-    List<Date> findElectricityPastDataList();
+    List<String> findElectricityPastDataList();
 
     /**
      * 行业名称
@@ -28,5 +28,8 @@ public interface ElectricityPastService {
      * @return
      */
     List<BigDecimal> findElectricityPastNumList();
+
+    List<BigDecimal> findElectricityPastNumSumByDate();
+
 
 }

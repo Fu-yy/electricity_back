@@ -11,15 +11,27 @@
         <result property="electricityNum" column="electricityNum"/>
     </resultMap>
     <select id="findElectricityPastList" resultType="com.fuy.pojo.ElectricityPast" resultMap="electricityPastResultMap">
-        select * from electricity_past
+        select * from electricity_past ORDER BY electricityDate ASC,electricityName ASC
     </select>
-    <select id="findElectricityPastDataList" resultType="java.util.Date" resultMap="electricityPastResultMap">
-        select distinct `electricityDate` from electricity_past
+
+
+    <select id="findElectricityPastDataList" resultType="java.lang.String">
+        select distinct `electricityDate` from electricity_past ORDER BY electricityDate ASC,electricityName ASC
     </select>
-    <select id="findElectricityPastNameList" resultType="java.lang.String" resultMap="electricityPastResultMap">
-        select distinct `electricityName` from electricity_past
+
+
+    <select id="findElectricityPastNameList" resultType="java.lang.String" >
+        select distinct `electricityName` from electricity_past ORDER BY electricityDate ASC,electricityName ASC;
     </select>
-    <select id="findElectricityPastNumList" resultType="java.math.BigDecimal" resultMap="electricityPastResultMap">
-        select `electricityNum` from electricity_past
+
+
+    <select id="findElectricityPastNumList" resultType="java.math.BigDecimal" >
+        select `electricityNum` from electricity_past ORDER BY electricityDate ASC,electricityName ASC;
     </select>
+
+
+    <select id="findElectricityPastNumSumByDate" resultType="java.math.BigDecimal">
+        SELECT SUM(electricityNum) FROM electricity_past GROUP BY electricityDate ORDER BY electricityDate ASC
+    </select>
+
 </mapper>

@@ -25,7 +25,7 @@ public class ElectricityPastServiceImpl implements ElectricityPastService {
     }
 
     @Override
-    public List<Date> findElectricityPastDataList() {
+    public List<String> findElectricityPastDataList() {
         return electricityPastMapper.findElectricityPastDataList();
     }
 
@@ -38,4 +38,11 @@ public class ElectricityPastServiceImpl implements ElectricityPastService {
     public List<BigDecimal> findElectricityPastNumList() {
         return electricityPastMapper.findElectricityPastNumList();
     }
+
+    @Override
+    public List<BigDecimal> findElectricityPastNumSumByDate() {
+        return electricityPastMapper.findElectricityPastNumSumByDate();
+    }
+
+
 }

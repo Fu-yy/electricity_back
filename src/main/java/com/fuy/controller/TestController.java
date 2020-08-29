@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 @Controller
@@ -36,17 +37,26 @@ public class TestController {
 
         List<ElectricityPast> electricityPasts = electricityPastService.findElectricityPastList();
 
-        List<Date> electricityPastDataList = electricityPastService.findElectricityPastDataList();
+        List<String> electricityPastDataList = electricityPastService.findElectricityPastDataList();
         List<String> electricityPastNameList = electricityPastService.findElectricityPastNameList();
+        List<BigDecimal> electricityPastNumSumByDate = electricityPastService.findElectricityPastNumSumByDate();
 
 
+        System.out.println(electricityPastNumSumByDate);
         Map<String,Object> resultMap = new HashMap<>();
+        resultMap.put("pastElectricityList",electricityPasts);
+        resultMap.put("electricityPastDataList",electricityPastDataList);
+        resultMap.put("electricityPastNumSumByDate",electricityPastNumSumByDate);
+
+//        resultMap.put("resultCode",electricityPastDataList);
 
 
 
 
 
-        return new Result(200,"成功",electricityPasts);
+
+
+        return new Result(200,"成功",resultMap);
     }
 
 

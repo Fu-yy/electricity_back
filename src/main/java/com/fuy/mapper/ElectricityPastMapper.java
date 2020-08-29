@@ -25,7 +25,7 @@ public interface ElectricityPastMapper {
      * 所有时间列表
      * @return
      */
-    List<Date> findElectricityPastDataList();
+    List<String> findElectricityPastDataList();
 
     /**
      * 行业名称
@@ -39,4 +39,11 @@ public interface ElectricityPastMapper {
      * @return
      */
     List<BigDecimal> findElectricityPastNumList();
+
+
+    /**
+     * 查询每天的和
+     * @return
+     */
+    List<BigDecimal> findElectricityPastNumSumByDate();
 }

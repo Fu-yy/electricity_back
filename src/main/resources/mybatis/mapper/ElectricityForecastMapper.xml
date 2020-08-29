@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuy.mapper.ElectricityForecastMapper">
+
+    <resultMap id="electricityForecastResultMap" type="ElectricityForecast">
+        <id property="forecastId" column="forecastId" />
+        <result property="forecastName" column="forecastName"/>
+        <result property="forecastDate" column="forecastDate"/>
+        <result property="forecastNum" column="forecastNum"/>
+    </resultMap>
+    <select id="findElectricityForecastList" resultType="com.fuy.pojo.ElectricityForecast" resultMap="electricityForecastResultMap">
+        select * from electricity_forecast ORDER BY forecastDate ASC,forecastName ASC
+    </select>
+
+
+    <select id="findElectricityForecastDataList" resultType="java.lang.String">
+        select distinct `forecastDate` from electricity_forecast ORDER BY forecastDate ASC,forecastName ASC
+    </select>
+
+
+    <select id="findElectricityForecastNameList" resultType="java.lang.String" >
+        select distinct `forecastName` from electricity_forecast ORDER BY forecastDate ASC,forecastName ASC;
+    </select>
+
+
+    <select id="findElectricityForecastNumList" resultType="java.math.BigDecimal" >
+        select `forecastNum` from electricity_forecast ORDER BY forecastDate ASC,forecastName ASC;
+    </select>
+
+
+    <select id="findElectricityForecastNumSumByDate" resultType="java.math.BigDecimal">
+        SELECT SUM(forecastNum) FROM electricity_forecast GROUP BY forecastDate ORDER BY forecastDate ASC
+    </select>
+
+</mapper>

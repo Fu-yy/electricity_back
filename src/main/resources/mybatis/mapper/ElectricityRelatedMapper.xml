@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuy.mapper.ElectricityRelatedMapper">
+    <resultMap id="electricityRelatedMap" type="ElectricityRelated">
+        <id property="relatedId" column="relatedId" />
+        <result property="electDate" column="electDate"/>
+        <result property="manuId" column="manuId"/>
+        <result property="energy" column="energy"/>
+        <association property="manufacts" column="manuId" select="com.fuy.mapper.ElectricityRelatedMapper.findById" >
+
+        </association>
+    </resultMap>
+
+    <select id="findAllRelated" resultMap="electricityRelatedMap" resultType="com.fuy.pojo.ElectricityRelated">
+        SELECT * FROM electricity_related ORDER BY electDate ASC
+    </select>
+
+
+
+</mapper>

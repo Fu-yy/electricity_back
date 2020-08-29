@@ -1,8 +1,12 @@
 package com.fuy.controller;
 
+import com.fuy.pojo.ElectricityForecast;
 import com.fuy.pojo.ElectricityPast;
+import com.fuy.pojo.ElectricityRelated;
 import com.fuy.pojo.TestPojo;
+import com.fuy.service.ElectricityForecastService;
 import com.fuy.service.ElectricityPastService;
+import com.fuy.service.ElectricityRelatedService;
 import com.fuy.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +21,13 @@ public class TestController {
     @Autowired
     private ElectricityPastService electricityPastService;
 
+
+    @Autowired
+    private ElectricityRelatedService electricityRelatedService;
+
+    @Autowired
+    private ElectricityForecastService electricityForecastService;
+
     @GetMapping("/test")
     @CrossOrigin
     @ResponseBody
@@ -30,6 +41,7 @@ public class TestController {
     }
 
 
+//    第一张图   历史用电量
     @GetMapping("/findElectricityPastList")
     @CrossOrigin
     @ResponseBody
@@ -58,6 +70,52 @@ public class TestController {
 
         return new Result(200,"成功",resultMap);
     }
+
+
+
+    //    第二张图   用电量关联性
+    @GetMapping("/findAllElectricityRelated")
+    @CrossOrigin
+    @ResponseBody
+    public Result findAllElectricityRelated(){
+        List<ElectricityRelated> allRelated = electricityRelatedService.findAllRelated();
+
+        return new Result(200,"成功",allRelated);
+    }
+
+
+
+    //    第3张图   预测用电量
+    @GetMapping("/findElectricityForecastList")
+    @CrossOrigin
+    @ResponseBody
+    public Result findElectricityForecastList(){
+
+        List<ElectricityForecast> electricityForecastList = electricityForecastService.findElectricityForecastList();
+        List<String> electricityForecastDataList = electricityForecastService.findElectricityForecastDataList();
+        List<BigDecimal> electricityForecastNumSumByDate = electricityForecastService.findElectricityForecastNumSumByDate();
+
+
+
+
+
+
+        Map<String,Object> resultMap = new HashMap<>();
+        resultMap.put("electricityForecastList",electricityForecastList);
+        resultMap.put("electricityForecastDataList",electricityForecastDataList);
+        resultMap.put("electricityForecastNumSumByDate",electricityForecastNumSumByDate);
+
+//        resultMap.put("resultCode",electricityPastDataList);
+
+
+
+
+
+
+
+        return new Result(200,"成功",resultMap);
+    }
+
 
 
 

@@ -18,5 +18,11 @@
     </select>
 
 
+    <select id="findAllDate"  resultType="java.lang.String">
+        SELECT DISTINCT `electDate` FROM `electricity_related` ORDER BY `electDate` ASC
+    </select>
+
+
+
 
 </mapper>

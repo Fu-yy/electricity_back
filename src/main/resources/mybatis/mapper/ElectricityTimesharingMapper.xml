@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuy.mapper.ElectricityTimesharingMapper">
+    <resultMap id="electricityTimesharingMap" type="ElectricityTimesharing">
+        <id property="timesharingId" column="timesharingId"/>
+        <result property="timesharingTime" column="timesharingTime"/>
+        <result property="timesharingNum" column="timesharingNum"/>
+        <result property="timesharingName" column="timesharingName"/>
+    </resultMap>
+    <select id="findAllElectricityTimeSharing" resultMap="electricityTimesharingMap" resultType="com.fuy.pojo.ElectricityTimesharing">
+      SELECT * FROM `electricity_timesharing` ORDER BY `timesharingTime` ASC,`timesharingName` ASC
+    </select>
+
+    <select id="findAllTime"  resultType="java.lang.String">
+        SELECT DISTINCT `timesharingTime` FROM `electricity_timesharing` ORDER BY `timesharingTime` ASC
+    </select>
+
+    <select id="findAllName"  resultType="java.lang.String">
+        SELECT DISTINCT `timesharingName` FROM `electricity_timesharing`
+    </select>
+
+</mapper>

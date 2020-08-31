@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuy.mapper.ElectricityDoMapper">
+    <resultMap id="electricityDoMap" type="ElectricityDo">
+        <id property="doId" column="doId"/>
+        <result property="doTime" column="doTime"/>
+        <result property="doName" column="doName"/>
+        <result property="doNum" column="doNum"/>
+    </resultMap>
+
+    <select id="findAllElectricityDo" resultType="com.fuy.pojo.ElectricityDo" resultMap="electricityDoMap">
+        SELECT * FROM electricity_do ORDER BY doTime ASC,doName ASC
+    </select>
+
+    <select id="findAllDate"  resultType="java.lang.String">
+        SELECT DISTINCT `doTime` FROM `electricity_do` ORDER BY `doTime` ASC
+    </select>
+
+    <select id="findAllName"  resultType="java.lang.String">
+        SELECT DISTINCT `doName` FROM `electricity_do`
+    </select>
+
+</mapper>

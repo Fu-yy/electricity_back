@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fuy.mapper.ElectricityTsoMapper">
+    <resultMap id="electricityTsoMapperMap" type="ElectricityTso">
+        <id property="optimizationId" column="optimizationId"/>
+        <result property="optimizationName" column="optimizationName"/>
+        <result property="optimizationNum" column="optimizationNum"/>
+        <result property="optimizationTime" column="optimizationTime"/>
+    </resultMap>
+    <select id="findAllElectricityTso" resultType="com.fuy.pojo.ElectricityTso" resultMap="electricityTsoMapperMap">
+      SELECT * FROM `electricity_tso` ORDER BY `optimizationTime` ASC,`optimizationName` ASC
+    </select>
+
+    <select id="findAllDate"  resultType="java.lang.String">
+        SELECT DISTINCT `optimizationTime` FROM `electricity_tso` ORDER BY `optimizationTime` ASC
+    </select>
+
+    <select id="findAllName"  resultType="java.lang.String">
+        SELECT DISTINCT `optimizationName` FROM `electricity_tso`
+    </select>
+
+</mapper>
+

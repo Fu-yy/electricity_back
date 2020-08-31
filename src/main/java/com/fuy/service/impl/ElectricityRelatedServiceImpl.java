@@ -7,8 +7,9 @@ import com.fuy.service.ElectricityRelatedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
-
+//2张   用电关联性
 @Service
 public class ElectricityRelatedServiceImpl implements ElectricityRelatedService {
 
@@ -19,4 +20,11 @@ public class ElectricityRelatedServiceImpl implements ElectricityRelatedService 
     public List<ElectricityRelated> findAllRelated() {
         return electricityRelatedMapper.findAllRelated();
     }
+
+    @Override
+    public List<String> findAllDate() {
+        return electricityRelatedMapper.findAllDate();
+    }
+
+
 }

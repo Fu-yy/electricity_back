@@ -20,4 +20,6 @@ class EletrictdataApplicationTests {
 		System.out.println(dataSource.getConnection());
 	}
 
+
+
 }

@@ -1,12 +1,7 @@
 package com.fuy.controller;
 
-import com.fuy.pojo.ElectricityForecast;
-import com.fuy.pojo.ElectricityPast;
-import com.fuy.pojo.ElectricityRelated;
-import com.fuy.pojo.TestPojo;
-import com.fuy.service.ElectricityForecastService;
-import com.fuy.service.ElectricityPastService;
-import com.fuy.service.ElectricityRelatedService;
+import com.fuy.pojo.*;
+import com.fuy.service.*;
 import com.fuy.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +22,16 @@ public class TestController {
 
     @Autowired
     private ElectricityForecastService electricityForecastService;
+
+    @Autowired
+    private ElectricityTimesharingService electricityTimesharingService;//4图
+
+    @Autowired
+    private ElectricityTsoService electricityTsoService; //5图
+
+
+    @Autowired
+    private ElectricityDoService electricityDoService;//6图
 
     @GetMapping("/test")
     @CrossOrigin
@@ -78,9 +83,12 @@ public class TestController {
     @CrossOrigin
     @ResponseBody
     public Result findAllElectricityRelated(){
-        List<ElectricityRelated> allRelated = electricityRelatedService.findAllRelated();
-
-        return new Result(200,"成功",allRelated);
+        HashMap<String, Object> resultMap = new HashMap<>();
+        List<ElectricityRelated> electricityRelatedServiceAllRelated = electricityRelatedService.findAllRelated();
+        List<String> electricityRelatedServiceAllDate = electricityRelatedService.findAllDate();
+        resultMap.put("electricityRelatedServiceAllRelated",electricityRelatedServiceAllRelated);
+        resultMap.put("electricityRelatedServiceAllDate",electricityRelatedServiceAllDate);
+        return new Result(200,"成功",resultMap);
     }
 
 
@@ -117,6 +125,88 @@ public class TestController {
     }
 
 
+
+    //    第4张图   峰谷平
+    @GetMapping("/findAllElectricityTimeSharing")
+    @CrossOrigin
+    @ResponseBody
+    public Result findAllElectricityTimeSharing(){
+
+        List<ElectricityTimesharing> allElectricityTimeSharing = electricityTimesharingService.findAllElectricityTimeSharing();
+        List<String> electricityTimesharingServiceAllTime = electricityTimesharingService.findAllTime();
+        List<String> electricityTimesharingServiceAllName = electricityTimesharingService.findAllName();
+
+
+        Map<String,Object> resultMap = new HashMap<>();
+        resultMap.put("allElectricityTimeSharing",allElectricityTimeSharing);
+        resultMap.put("electricityTimesharingServiceAllTime",electricityTimesharingServiceAllTime);
+        resultMap.put("electricityTimesharingServiceAllName",electricityTimesharingServiceAllName);
+
+//        resultMap.put("resultCode",electricityPastDataList);
+
+
+
+
+
+
+
+        return new Result(200,"成功",resultMap);
+    }
+
+    //    第5张图   分时优化
+    @GetMapping("/findAllElectrElectricityTso")
+    @CrossOrigin
+    @ResponseBody
+    public Result findAllElectrElectricityTso(){
+
+        List<ElectricityTso> electricityTsoServiceAllElectricityTso = electricityTsoService.findAllElectricityTso();
+        List<String> electricityTsoServiceAllDate = electricityTsoService.findAllDate();
+        List<String> electricityTsoServiceAllName = electricityTsoService.findAllName();
+
+
+        Map<String,Object> resultMap = new HashMap<>();
+        resultMap.put("electricityTsoServiceAllElectricityTso",electricityTsoServiceAllElectricityTso);
+        resultMap.put("electricityTsoServiceAllDate",electricityTsoServiceAllDate);
+        resultMap.put("electricityTsoServiceAllName",electricityTsoServiceAllName);
+
+//        resultMap.put("resultCode",electricityPastDataList);
+
+
+
+
+
+
+
+        return new Result(200,"成功",resultMap);
+    }
+
+
+    //    第6张图   需求侧优化
+    @GetMapping("/findAlElectricityDo")
+    @CrossOrigin
+    @ResponseBody
+    public Result findAlElectricityDo(){
+
+        List<ElectricityDo> electricityDoServiceAllElectricityDo = electricityDoService.findAllElectricityDo();
+        List<String> electricityDoServiceAllDate = electricityDoService.findAllDate();
+        List<String> electricityDoServiceAllName = electricityDoService.findAllName();
+
+
+        Map<String,Object> resultMap = new HashMap<>();
+        resultMap.put("electricityDoServiceAllElectricityDo",electricityDoServiceAllElectricityDo);
+        resultMap.put("electricityDoServiceAllDate",electricityDoServiceAllDate);
+        resultMap.put("electricityDoServiceAllName",electricityDoServiceAllName);
+
+//        resultMap.put("resultCode",electricityPastDataList);
+
+
+
+
+
+
+
+        return new Result(200,"成功",resultMap);
+    }
 
 
 }

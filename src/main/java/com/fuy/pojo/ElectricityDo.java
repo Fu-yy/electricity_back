@@ -1,9 +1,20 @@
 package com.fuy.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 需求侧用电量优化
+ * 第六张
+ */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ElectricityDo {
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
 

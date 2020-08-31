@@ -9,6 +9,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
+/**
+ * 分时电量
+ * 第四章
+ */
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

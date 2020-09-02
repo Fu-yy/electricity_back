@@ -4,11 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fuy.mapper.ElectricityRelatedMapper">
     <resultMap id="electricityRelatedMap" type="ElectricityRelated">
-        <id property="relatedId" column="relatedId" />
+        <id property="relatedId" column="relatedId"/>
         <result property="electDate" column="electDate"/>
         <result property="manuId" column="manuId"/>
         <result property="energy" column="energy"/>
-        <association property="manufacts" column="manuId" select="com.fuy.mapper.ElectricityRelatedMapper.findById" >
+        <association property="manufacts" column="manuId" select="com.fuy.mapper.ElectricityRelatedMapper.findById">
 
         </association>
     </resultMap>
@@ -18,11 +18,14 @@
     </select>
 
 
-    <select id="findAllDate"  resultType="java.lang.String">
+    <select id="findAllDate" resultType="java.lang.String">
         SELECT DISTINCT `electDate` FROM `electricity_related` ORDER BY `electDate` ASC
     </select>
 
 
+    <select id="findSumByName" resultType="java.lang.Integer">
+      SELECT SUM(energy)  FROM electricity_related WHERE manuId IN(SELECT manuId FROM manufacts WHERE OWNER = #{name}) GROUP BY electDate ORDER BY electDate ASC
+    </select>
 
 
 </mapper>

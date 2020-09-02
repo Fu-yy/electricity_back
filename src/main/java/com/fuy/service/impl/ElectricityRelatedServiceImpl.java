@@ -26,5 +26,10 @@ public class ElectricityRelatedServiceImpl implements ElectricityRelatedService 
         return electricityRelatedMapper.findAllDate();
     }
 
+    @Override
+    public List<Integer> findSumByName(String name) {
+        return electricityRelatedMapper.findSumByName(name);
+    }
+
 
 }

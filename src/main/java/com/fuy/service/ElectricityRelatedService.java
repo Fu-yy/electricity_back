@@ -11,6 +11,7 @@ public interface ElectricityRelatedService {
 
     List<String> findAllDate();
 
+    List<Integer> findSumByName(String name);
 
 
 }

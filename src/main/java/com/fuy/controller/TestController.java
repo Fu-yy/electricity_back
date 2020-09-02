@@ -86,8 +86,19 @@ public class TestController {
         HashMap<String, Object> resultMap = new HashMap<>();
         List<ElectricityRelated> electricityRelatedServiceAllRelated = electricityRelatedService.findAllRelated();
         List<String> electricityRelatedServiceAllDate = electricityRelatedService.findAllDate();
+
+        List<Integer> mechanicalSum = electricityRelatedService.findSumByName("机械制造业");
+        List<Integer> carSum = electricityRelatedService.findSumByName("航空制造业");
+        List<Integer> aviationSum = electricityRelatedService.findSumByName("汽车制造业");
+
+
         resultMap.put("electricityRelatedServiceAllRelated",electricityRelatedServiceAllRelated);
         resultMap.put("electricityRelatedServiceAllDate",electricityRelatedServiceAllDate);
+        resultMap.put("mechanicalSum",mechanicalSum);
+        resultMap.put("carSum",carSum);
+        resultMap.put("aviationSum",aviationSum);
+
+
         return new Result(200,"成功",resultMap);
     }
 

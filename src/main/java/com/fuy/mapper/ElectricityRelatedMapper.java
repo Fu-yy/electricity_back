@@ -15,5 +15,11 @@ public interface ElectricityRelatedMapper {
 
     List<String> findAllDate();
 
+//    查找行业用电量总和
+    List<Integer> findSumByName(String name);
+
+
+
+
 
 }

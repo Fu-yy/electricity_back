@@ -16,12 +16,12 @@
 
 
     <select id="findElectricityPastDataList" resultType="java.lang.String">
-        select distinct `electricityDate` from electricity_past ORDER BY electricityDate ASC,electricityName ASC
+        SELECT DISTINCT `electricityDate` FROM electricity_past ORDER BY electricityDate ASC
     </select>
 
 
     <select id="findElectricityPastNameList" resultType="java.lang.String" >
-        select distinct `electricityName` from electricity_past ORDER BY electricityDate ASC,electricityName ASC;
+        SELECT  DISTINCT `electricityName` FROM electricity_past ORDER BY electricityName ASC
     </select>
 
 

@@ -16,12 +16,12 @@
 
 
     <select id="findElectricityForecastDataList" resultType="java.lang.String">
-        select distinct `forecastDate` from electricity_forecast ORDER BY forecastDate ASC,forecastName ASC
+        select distinct `forecastDate` from electricity_forecast ORDER BY forecastDate ASC
     </select>
 
 
     <select id="findElectricityForecastNameList" resultType="java.lang.String" >
-        select distinct `forecastName` from electricity_forecast ORDER BY forecastDate ASC,forecastName ASC;
+        select distinct `forecastName` from electricity_forecast ORDER BY forecastName ASC;
     </select>
 
 
